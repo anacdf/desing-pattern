@@ -30,14 +30,21 @@ public class Cliente {
     }
 
 
-
     public Genero getGenero() {
         return genero;
     }
 
 
     public boolean isSocio() {
-        return socio;
+    	if(socio) {
+    		return true;
+    	}return false;
     }
 
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", idade=" + idade + ", genero=" + genero + ", socio=" + socio
+				+ "]";
+	}
+    
 }
