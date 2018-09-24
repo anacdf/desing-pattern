@@ -1,6 +1,6 @@
 package com.company;
 
-public class Cliente {
+public class Cliente implements ICliente, Cloneable {
     private String nome;
     private String cpf;
     private int idade;

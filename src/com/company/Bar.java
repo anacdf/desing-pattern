@@ -1,24 +1,21 @@
 package com.company;
 
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bar {
-    private Map<String, Cliente> clientes;
+    private Map<String, ICliente> clientes;
     private int cont=0;
     private int contFem=0;
+    private SalvarDadosClientes salvar;
 
     public Bar() {
         this.clientes = new HashMap<>();
     }
 
-    public void addCliente(Cliente cliente){
+    public void addCliente(ICliente cliente){
         clientes.put(cliente.getCpf(), cliente);
         if(cliente.isSocio()) {
         	cont++;
@@ -26,9 +23,10 @@ public class Bar {
         if(cliente.getGenero() == Genero.Feminino) {
         	contFem++;
         }
+        
     }
 
-    public Cliente buscaCliente(String cpf){
+    public ICliente buscaCliente(String cpf){
         return clientes.get(cpf);
     }
     
@@ -54,11 +52,9 @@ public class Bar {
     	return (1-(contFem/clientes.size()))*100;
     }
     
-    public void salvar(Bar bar, String nomeArquivo) throws FileNotFoundException, IOException {
-		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-	              new FileOutputStream(nomeArquivo + ".txt"), "utf-8"))) {
-	   writer.write(bar.toString());
-		}
-	}
+    public void salvar() throws FileNotFoundException, IOException {
+    	salvar = new SalvarDadosClientes("clientes");
+    	salvar.salvar();
+    }
 
 }

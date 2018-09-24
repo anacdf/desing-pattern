@@ -12,10 +12,10 @@ public class Main {
     	Bar meuBar = new Bar();
     	
     	meuBar.addCliente(c1);
-    	meuBar.addCliente(c2);
-    	meuBar.addCliente(c3);
-    	meuBar.addCliente(c4);
-    	meuBar.addCliente(c5);
+		meuBar.addCliente(c2);
+		meuBar.addCliente(c3);
+		meuBar.addCliente(c4);
+		meuBar.addCliente(c5);
     	
     	System.out.println(meuBar.totalPessoas());
     	System.out.println(meuBar.buscaCliente("123456"));
